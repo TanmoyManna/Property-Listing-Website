@@ -1,0 +1,26 @@
+.img-swiper {
+    width: 100%;
+    // max-width: 200px !important;
+    // min-width: 200px !important;
+    object-fit: contain;
+    max-height: 200px !important;
+    min-height: 200px !important;
+}
+
+.img-list {
+    min-width: 100%;
+    object-fit: cover;
+    max-height: 200px !important;
+    min-height: 200px !important;
+}
+
+.error {
+    border: 1px solid rgb(255, 0, 0) !important;
+    border-radius: 6px !important;
+}
+.call{
+    bottom: 100px !important;
+}
+.whatsapp{
+    bottom: 155px !important;
+}

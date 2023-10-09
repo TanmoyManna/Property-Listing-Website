@@ -1,0 +1,329 @@
+<div class="recipe-wrapper">
+    <div class="container">
+        <div class="recipe-wrapper__row">
+            <div class="recipe-header">
+                <div class="recipe-header__row">
+                    <div class="recipe-header__col">
+                        <h2>Add Property</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="plannerArea">
+            <div class="bodyTitle">
+                <h4>
+                    <!-- <a (click)="Back()"><img src="./assets/images/backicon.svg" alt="" />Back</a> -->
+                </h4>
+                <div class="recipe-header__col recipe-header__col--act">
+                    <button class="recipe-header__col__button" (click)="updateProperty(propertyForm)">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <div class="plannerBody">
+                <div class="addForm">
+                    <form [formGroup]="propertyForm">
+                        <div class="form-group" id="Title_Price">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Title</label>
+                                    <input type="text" class="formInput" placeholder="Give your Property a name"
+                                        formControlName="title" [ngClass]="{error:
+                                            propertyForm.controls.title.touched &&
+                                            propertyForm.controls.title.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Price(INR)</label>
+                                    <input type="text" class="formInput" placeholder="Give your Property a Price"
+                                        (keydown)="numberOnly($event)" formControlName="price" [ngClass]="{error:
+                                       propertyForm.controls.price.touched &&
+                                       propertyForm.controls.price.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Images">
+                            <label>Upload Images</label>                            
+                            <div class="Upload__area">
+                                <div class="previewImagesOld">
+                                    <ng-container *ngIf="showUploadedImages.length > 0 && showUploadedImages.length < 4">
+                                        <div class="previewImages">
+                                            <ng-container *ngFor="let image2 of showUploadedImages;let i = index">
+                                                <div style="margin-right: 10px;">
+                                                    <mat-icon class="deleteIcon" (click)="deleteFiles2(i)">remove_circle
+                                                    </mat-icon>
+                                                    <img class="preview_image" src="{{ImageUrl}}properties/{{image2}}"
+                                                        alt="">
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="showUploadedImages.length > 3">
+                                        <swiper [config]="imageSwiper">
+                                            <ng-container *ngFor="let image2 of showUploadedImages;let i = index">
+                                                <ng-template swiperSlide>
+                                                    <mat-icon class="deleteIcon" (click)="deleteFiles2(i)">remove_circle
+                                                    </mat-icon>
+                                                    <img class="preview_image" src="{{ImageUrl}}properties/{{image2}}"
+                                                        alt="">
+                                                </ng-template>
+                                            </ng-container>
+                                        </swiper>
+                                    </ng-container>
+                                </div>
+                                <div class="upload-btn-wrapper" [ngClass]="{error:
+                                    propertyForm.controls.images.touched && (uploadedFiles.length==0)}">
+                                    <button class="upldbtn">
+                                        <img src="./assets/images/camera.svg" alt="" />
+                                        <p>Add Photo</p>
+                                    </button>
+                                    <input type="file" multiple name="myfile" accept="image/png,image/jpg,image/jpeg"
+                                        (change)="fileAdded($event)" />
+                                </div>
+                                <div class="previewImages">
+                                    <ng-container
+                                        *ngIf="previewUploadedFiles.length > 0 && previewUploadedFiles.length < 4">
+                                        <div class="previewImages">
+                                            <ng-container *ngFor="let image1 of previewUploadedFiles;let i = index">
+                                                <div style="margin-right: 10px;">
+                                                    <mat-icon class="deleteIcon" (click)="deleteFiles(i)">remove_circle
+                                                    </mat-icon>
+                                                    <img class="preview_image" src="{{ image1 }}" alt="" />
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="previewUploadedFiles.length > 3">
+                                        <swiper [config]="imageSwiper">
+                                            <ng-container *ngFor="let image1 of previewUploadedFiles;let i = index">
+                                                <ng-template swiperSlide>
+                                                    <mat-icon class="deleteIcon" (click)="deleteFiles(i)">remove_circle
+                                                    </mat-icon>
+                                                    <img class="preview_image" src="{{ image1 }}" alt="" />
+                                                </ng-template>
+                                            </ng-container>
+                                        </swiper>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Description">
+                            <label>Description</label>
+                            <!-- ==== editor ==== -->
+                            <div [ngClass]="{error:
+                                propertyForm.controls.description.touched &&
+                                propertyForm.controls.description.hasError('required')}">
+                                <angular-editor placeholder="White Something About Your Property....."
+                                    formControlName="description" [config]="config"></angular-editor>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Full_Address">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Address</label>
+                                    <input type="text" class="formInput"
+                                        placeholder="Write Full Address Of Your Property" formControlName="fullAddress"
+                                        [ngClass]="{error:
+                                            propertyForm.controls.fullAddress.touched &&
+                                            propertyForm.controls.fullAddress.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Country_State">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="formInput" placeholder="In Which Country is Your Property"
+                                        formControlName="country" [ngClass]="{error:
+                                            propertyForm.controls.country.touched &&
+                                            propertyForm.controls.country.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="formInput" placeholder="In Which State is Your Property"
+                                        formControlName="state" [ngClass]="{error:
+                                            propertyForm.controls.state.touched &&
+                                            propertyForm.controls.state.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="City_Area">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="formInput" placeholder="In Which City is Your Property"
+                                        formControlName="city" [ngClass]="{error:
+                                            propertyForm.controls.city.touched &&
+                                            propertyForm.controls.city.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="formInput" placeholder="In Which Area is Your Property"
+                                        formControlName="area" [ngClass]="{error:
+                                            propertyForm.controls.area.touched &&
+                                            propertyForm.controls.area.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="VideoLink">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Video Link</label>
+                                    <input type="text" class="formInput" placeholder="Give your Property a name"
+                                        formControlName="videoLink" [ngClass]="{error:
+                                        propertyForm.controls.videoLink.touched &&
+                                        propertyForm.controls.videoLink.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Amenities">
+                            <label>Amenities</label>
+                            <mat-form-field class="example-chip-list fullwidth" appearance="fill" [ngClass]="{error:propertyForm.controls.amenities.touched
+                              && (Amenities.length==0)}">
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                    <mat-chip *ngFor="let amenity of Amenities;let i = index" (removed)="remove(i)">
+                                        {{amenity}}
+                                        <button matChipRemove>
+                                            <mat-icon>cancel</mat-icon>
+                                        </button>
+                                    </mat-chip>
+                                    <!-- [formControl]="fruitCtrl" -->
+                                    <input class="formInput" placeholder="Enter Property Amenities" #fruitInput
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group" id="UseCase_Builder_Type">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Use Case</label>
+                                    <select class="formInput" formControlName="useCase" [ngClass]="{error:
+                                        propertyForm.controls.useCase.touched &&
+                                        propertyForm.controls.useCase.hasError('required')}">
+                                        <option value="" disabled>Select Use Case Of This Property</option>
+                                        <option value="Residental">Residental</option>
+                                        <option value="Commercial">Commercial</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Builder Type</label>
+                                    <select class="formInput" formControlName="builderType" [ngClass]="{error:
+                                        propertyForm.controls.builderType.touched &&
+                                        propertyForm.controls.builderType.hasError('required')}">
+                                        <option value="" disabled>Select Builder Type Of This Property</option>
+                                        <option value="Feature">Feature</option>
+                                        <option value="Signature">Signature</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="For_Residental"
+                            *ngIf="propertyForm.get('useCase')?.value=='Residental'">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>No. Of Rooms</label>
+                                    <input type="text" class="formInput" placeholder="Enter Number Of Rooms"
+                                        (keydown)="numberOnly($event)" formControlName="rooms" [ngClass]="{error:
+                                            propertyForm.controls.rooms.touched &&
+                                            propertyForm.controls.rooms.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>No. Of Bed Rooms</label>
+                                    <input type="text" class="formInput" placeholder="Enter Number Of Bed Rooms"
+                                        (keydown)="numberOnly($event)" formControlName="bedRooms" [ngClass]="{error:
+                                            propertyForm.controls.bedRooms.touched &&
+                                            propertyForm.controls.bedRooms.hasError('required')}" />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>No. Of Bath Rooms</label>
+                                    <input type="text" class="formInput" placeholder="Enter Number Of Bath Rooms"
+                                        (keydown)="numberOnly($event)" formControlName="bathRooms" [ngClass]="{error:
+                                            propertyForm.controls.title.touched &&
+                                            propertyForm.controls.title.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Property Type</label>
+                                    <select class="formInput" formControlName="propertyType" [ngClass]="{error:
+                                        propertyForm.controls.propertyType.touched &&
+                                        propertyForm.controls.propertyType.hasError('required')}">
+                                        <option value="" disabled>Select Type Of This Property</option>
+                                        <option value="Apartment">Apartment</option>
+                                        <option value="Villa">Villa</option>
+                                        <option value="Building">Building</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Bungalow">Bungalow</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="For_Commercial"
+                            *ngIf="propertyForm.get('useCase')?.value=='Commercial'">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>No. Of Garages</label>
+                                    <input type="text" class="formInput" placeholder="Enter Number Of Garages"
+                                        (keydown)="numberOnly($event)" formControlName="garages" [ngClass]="{error:
+                                            propertyForm.controls.garages.touched &&
+                                            propertyForm.controls.garages.hasError('required')}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>No. Of Basements</label>
+                                    <input type="text" class="formInput" placeholder="Enter Number Of Basements"
+                                        (keydown)="numberOnly($event)" formControlName="basements" [ngClass]="{error:
+                                            propertyForm.controls.basements.touched &&
+                                            propertyForm.controls.basements.hasError('required')}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Property Type</label>
+                                    <select class="formInput" formControlName="propertyType" [ngClass]="{error:
+                                        propertyForm.controls.propertyType.touched &&
+                                        propertyForm.controls.propertyType.hasError('required')}">
+                                        <option value="" disabled>Select Type Of This Property</option>
+                                        <option value="Work Space">Work Space</option>
+                                        <option value="Office">Office</option>
+                                        <option value="Shop">Shop</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Price_Rent/Sell">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Property Area(sq.ft)</label>
+                                    <input type="text" class="formInput" placeholder="Enter Value In SQ.FT"
+                                        (keydown)="numberOnly($event)" formControlName="areaInFT" [ngClass]="{error:
+                                        propertyForm.controls.areaInFT.touched &&
+                                        propertyForm.controls.areaInFT.hasError('required')}" />
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Rent/Sell</label>
+                                    <select class="formInput" formControlName="pricing" [ngClass]="{error:
+                                        propertyForm.controls.pricing.touched &&
+                                        propertyForm.controls.pricing.hasError('required')}">
+                                        <option value="" disabled>Select One Of The Option</option>
+                                        <option value="Rent">Rent</option>
+                                        <option value="Sell">Sell</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Property Status</label>
+                                    <select class="formInput" formControlName="status" [ngClass]="{error:
+                                      propertyForm.controls.status.touched &&
+                                      propertyForm.controls.status.hasError('required')}">
+                                        <option value="" disabled>Select The Status</option>
+                                        <option value="New Launch">New Launch</option>
+                                        <option value="Ready To Move">Ready To Move</option>
+                                        <option value="Under Construction">Under Construction</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.img-list {
+    min-width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    height: 300px;
+}
+
+.deleteIcon {
+    color: red;
+    position: absolute;
+    right: 5px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.eidtIcon {
+    color: #27ee03;
+    position: absolute;
+    right: 30px;
+    z-index: 1;
+    cursor: pointer;
+}

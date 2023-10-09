@@ -1,0 +1,121 @@
+<div class="container">
+    <table class="responsive-table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Massage</th>
+                <th scope="col">Status</th>
+                <th scope="col">Remarks</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of contactSubmits;let i = index">
+                <tr>
+                    <th scope="row">{{item.name}}</th>
+                    <td data-title="Email">{{item.email}}</td>
+                    <td data-title="Phone">{{item.phone}}</td>
+                    <td data-title="User Type">{{item.type}}</td>
+                    <td data-title="Massage">{{item.massage}}</td>
+                    <td data-title="Status">{{item.status}}</td>
+                    <td data-title="Remarks">{{item.remarks}}</td>
+                    <td class="action">
+                        <button type="button" class="btn btn-success" (click)="openEditModal(item)"><i
+                                class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger" (click)="deleteContactSubmits(item._id)"><i
+                                class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade right" id="modalDiscount" data-backdrop="true">
+    <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading"><strong>Edit Contact Submit</strong></p>
+            </div>
+            <!--Body-->
+            <div class="modal-body" *ngIf="modalData != undefined">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">Name:-</label>
+                            <input type="text" class="formInput" id="name" disabled [(ngModel)]="modalData.name"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">Email:-</label>
+                            <input type="email" class="formInput" id="email" disabled [(ngModel)]="modalData.email"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">Phone:-</label>
+                            <input type="email" class="formInput" id="phone" disabled [(ngModel)]="modalData.phone"/>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">User Type:-</label>
+                            <input type="email" class="formInput" id="userType" disabled [(ngModel)]="modalData.type"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">Message:-</label>
+                            <textarea class="formInput" style="height: 150px" disabled [(ngModel)]="modalData.massage"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="phone">Status:-</label>
+                            <select class="select-class" id="status" [(ngModel)]="modalData.status">
+                                <option value="" disabled>Select One Of The Option</option>
+                                <option value="PENDING">Pending</option>
+                                <option value="SUCCESS">Success</option>
+                                <option value="FAILED">Failed</option>
+                                <option value="ONGOING">On Going</option>
+                                <option value="NORESPONSE">No Response</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <label for="message">Remarks:-</label>
+                            <textarea class="formInput"style="height: 150px" [(ngModel)]="modalData.remarks"></textarea>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer flex-center">
+                <button class="btn btn-success" (click)="submitEditModal()">Save</button>
+                <button class="btn btn-danger" (click)="closeEditModal()">No, thanks</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

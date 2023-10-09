@@ -1,0 +1,17 @@
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+}
+
+.dummymodal {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 20px;
+}

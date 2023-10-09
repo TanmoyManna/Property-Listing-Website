@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="logo">
+        <img src="assets/logo.png" alt="">
+    </div>
+    <!-- <div class="text-center mt-4 name">
+        Twitter
+    </div> -->
+    <form class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="email" id="email" placeholder="email" #email>
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder="Password" #passWord>
+        </div>
+        <button class="btn mt-3" (click)="login(email.value,passWord.value)">Login</button>
+    </form>
+    <div class="text-center fs-6">
+        <a>Don't have a account?</a> <a href="/auth/signup"> Sign up</a>
+    </div>
+</div>

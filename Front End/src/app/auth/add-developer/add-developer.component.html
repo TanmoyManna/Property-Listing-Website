@@ -1,0 +1,78 @@
+<div class="recipe-wrapper">
+    <div class="container">
+        <div class="recipe-wrapper__row">
+            <div class="recipe-header">
+                <div class="recipe-header__row">
+                    <div class="recipe-header__col">
+                        <h2>Add Feature Developer</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="plannerArea">
+            <div class="bodyTitle">
+                <h4>
+                    <a (click)="Back()"><img src="./assets/images/backicon.svg" alt="" />Back</a>
+                </h4>
+                <div class="recipe-header__col recipe-header__col--act">
+                    <button class="recipe-header__col__button" (click)="createdeveloper(developerForm)">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <div class="plannerBody">
+                <div class="addForm">
+                    <form [formGroup]="developerForm">
+                        <div class="form-group" id="Title_Price">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Title</label>
+                                    <input type="text" class="formInput" placeholder="Give your Property a name"
+                                        formControlName="title" [ngClass]="{error:
+                                            developerForm.controls.title.touched &&
+                                            developerForm.controls.title.hasError('required')}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="Images">
+                            <label>Upload Images</label>
+                            <div class="Upload__area">
+                                <div class="upload-btn-wrapper" [ngClass]="{error:
+                                    developerForm.controls.images.touched && (uploadedFiles.length==0)}">
+                                    <button class="upldbtn">
+                                        <img src="./assets/images/camera.svg" alt="" />
+                                        <p>Add Photo</p>
+                                    </button>
+                                    <input type="file" name="myfile" accept="image/png,image/jpg,image/jpeg"
+                                        (change)="fileAdded($event)" />
+                                </div>
+                                <div class="previewImages">
+                                    <ng-container *ngIf="previewUploadedFiles.length > 0 && previewUploadedFiles.length < 4">
+                                        <div class="previewImages">
+                                          <ng-container *ngFor="let image of previewUploadedFiles;let i = index">
+                                            <div style="margin-right: 10px;">
+                                              <mat-icon class="deleteIcon" (click)="deleteFiles(i)">remove_circle</mat-icon>
+                                            <img class="preview_image" src="{{ image }}" alt="" />  
+                                            </div>                                              
+                                          </ng-container>                                                                                  
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="previewUploadedFiles.length > 3">
+                                      <swiper [config]="imageSwiper">
+                                          <ng-container *ngFor="let image of previewUploadedFiles;let i = index">
+                                              <ng-template swiperSlide>
+                                                <mat-icon class="deleteIcon" (click)="deleteFiles(i)">remove_circle</mat-icon>
+                                                <img class="preview_image" src="{{ image }}" alt="" />                                                
+                                              </ng-template>
+                                          </ng-container>
+                                      </swiper>
+                                  </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

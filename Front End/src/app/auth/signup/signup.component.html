@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="logo">
+        <img src="assets/logo.png" alt="">
+    </div>
+    <form class="p-3 mt-3" [formGroup]="registerForm">
+        <div class="form-field d-flex align-items-center" [ngClass]="{
+            error:
+              registerForm.controls.name.touched &&
+              registerForm.controls.name.hasError('required')
+          }">
+            <span class="far fa-user"></span>
+            <input type="text" name="name" id="name" placeholder="name" formControlName="name"/>
+        </div>
+        <div class="form-field d-flex align-items-center" [ngClass]="{
+            error:
+              registerForm.controls.email.touched &&
+              registerForm.controls.email.hasError('required')
+          }">
+            <span class="fas fa-key"></span>
+            <input type="text" name="email" id="email" placeholder="Email" formControlName="email"/>
+        </div>
+        <div class="form-field d-flex align-items-center" [ngClass]="{
+            error:
+              registerForm.controls.password.touched &&
+              registerForm.controls.password.hasError('required') &&
+              registerForm.controls.password.hasError('pattern')
+          }">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="password" placeholder="Password" formControlName="password" />
+        </div>
+        <div class="form-field d-flex align-items-center" [ngClass]="{
+            error:
+              registerForm.controls.phone.touched &&
+              registerForm.controls.phone.hasError('required') &&
+              registerForm.controls.phone.hasError('minLength')
+          }">
+            <span class="fas fa-key"></span>
+            <input type="text" name="phone" id="phone" placeholder="phone" formControlName="phone"/>
+        </div>
+        <button class="btn mt-3" (click)="submit()">Signup</button>
+    </form>
+</div>

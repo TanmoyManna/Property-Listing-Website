@@ -1,0 +1,26 @@
+<div class="container-fluid nav-bar bg-transparent" id="authHeader">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="/home" class="navbar-brand d-flex align-items-center text-center">
+            <div class="p-2 me-2">
+                <img class="img-fluid" src="assets/logo.png" alt="Icon" style="width: 100%; height: 70px">
+            </div>
+        </a>
+        <button type="button" class="navbar-toggler" (click)="toggle()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- collapse show -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="/auth/add-property" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/auth/add-property'}">Add Property</a>
+                <a href="/auth/property-listing" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/auth/property-listing'}">All Properties</a>
+                <ng-container *ngIf="isAdmin">
+                    <a href="/auth/add-developer" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/auth/add-developer'}">Add Developer</a>
+                    <a href="/auth/developer-listing" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/auth/developer-listing'}">All Developers</a>
+                    <a href="/auth/contact-submits" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/auth/contact-submits'}">Contact Submits</a>
+                </ng-container>
+                <a class="nav-item nav-link" (click)="Logout()" style="cursor:pointer">LogOut</a>
+            </div>
+            <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
+        </div>
+    </nav>
+</div>

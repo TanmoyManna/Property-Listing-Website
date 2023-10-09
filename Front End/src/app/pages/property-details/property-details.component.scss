@@ -1,0 +1,18 @@
+.img-swiper {
+    min-width: 100%;
+    object-fit: cover;
+    max-height: 500px !important;
+    min-height: 500px !important;
+}
+
+.paddind-custom {
+    padding: 1.5% 7% 1% 7.5%;
+    ;
+}
+.form-control{
+    margin-bottom: 5px;
+}
+.error {
+    border: 1px solid rgb(255, 0, 0) !important;
+    border-radius: 6px !important;
+}

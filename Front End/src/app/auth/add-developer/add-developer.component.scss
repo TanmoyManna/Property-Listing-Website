@@ -1,0 +1,311 @@
+.error {
+    border: 1px solid rgb(255, 0, 0) !important;
+    border-radius: 6px !important;
+  }
+  .recipe-wrapper {
+    .container {
+      @media (min-width: 1800px) {
+        max-width: 1100px;
+      }
+    }
+  
+    .recipe-header__col__button {
+      padding: 0 43px;
+      height: 48px;
+      background: #F1C500;
+      border: 1px solid #F1C500;
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+      color: #022C3B;
+  
+      @media (max-width: 777px) {
+          padding: 0 2rem;
+          height: 47px;
+          font-size: 14px;
+      }
+  
+      @media (max-width: 500px) {
+        padding: 0 2rem;
+        height: 36px;
+        font-size: 14px;
+      }
+  
+      &:hover {
+        background: transparent;
+      }
+    }
+  
+  
+    .recipe-wrapper__row {
+      padding-top: 4rem;
+      padding-bottom: 40px;
+  
+      @media (max-width: 777px) {
+        padding-bottom: 1rem;
+      }
+    }
+  
+    .recipe-header {
+      margin-bottom: 2rem;
+  
+      .recipe-header__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        .recipe-header__col {
+          .recipe-header__col-headering-fst {
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            color: #A9A9A9;
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+  
+          a,
+          h2 {
+            font-weight: 400;
+            font-size: 24px;
+            letter-spacing: 0.02em;
+            color: #022C3B;
+            position: relative;
+  
+            @media (max-width: 777px) {
+              font-size: 19px;
+            }
+  
+            @media (max-width: 500px) {
+              font-size: 15px;
+            }
+  
+  
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 100%;
+              width: 58px;
+              height: 4px;
+              background: #F1C500;
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  
+    .plannerArea {
+      background: #FFFFFF;
+      box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+      border-radius: 18px;
+  
+      .bodyTitle {
+        h4 {
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 36px;
+          letter-spacing: 0.02em;
+          color: #022C3B;
+          margin-bottom: 0;
+  
+          @media (max-width: 777px) {
+            font-size: 18px;
+          }
+  
+          @media (max-width: 500px) {
+            font-size: 13px;
+          }
+  
+          img {
+            margin-right: 15px;
+          }
+  
+          a {
+            &:hover {
+              color: inherit;
+            }
+          }
+  
+        }
+        padding: 30px 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(2, 44, 59, 0.2);
+  
+        @media (max-width: 777px) {
+          padding:16px 30px;
+        }
+      }
+  
+      .plannerBody {
+        padding: 5%;
+  
+        .addForm {
+          label {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 36px;
+            letter-spacing: 0.02em;
+            color: #022C3B;
+            margin-bottom: 18px;
+  
+            span {
+              font-weight: 400;
+              font-size: 13px;
+              line-height: 16px;
+              color: #222222;
+              opacity: 0.5;
+              display: block;
+            }
+          }
+  
+          .formInput, textarea {
+            background: #FFFFFF;
+            border: 1px solid rgba(34, 34, 34, 0.3);
+            border-radius: 6px;
+            height: 40px;
+            padding: 10px 30px !important;
+            width: 100%;
+            margin-bottom: 18px;
+          }
+  
+          ::placeholder {
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 16px;
+            color: #222222;
+            opacity: 0.5;
+          }
+  
+          .formTextarea1 {
+            height: 56px;
+            margin-bottom: 30px;
+          }
+  
+          .formTextarea2 {
+            height: 125px;
+          }
+  
+          select {
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 16px;
+            color: rgb(138, 138, 138);
+            //background-image: url(../../../assets/images/selectdown.svg) !important;
+            background-repeat: no-repeat !important;
+            background-position: 90% 50% !important;
+          }
+  
+          .form-group {
+            margin-bottom: 26px;
+            .customUpload__area{
+              display: flex;
+              .preview_image{
+                margin: 0rem 2rem 0rem 0rem;
+                max-height: 8.5rem;
+                // max-width: 20rem;
+                object-fit: contain;
+              }
+            }
+          }
+          .ibtn {
+  
+              width: 17px;
+              height: 17px;
+              border: 1px solid #222222;
+              border-radius: 50%;
+              display: inline-block;
+              font-size: 11px;
+              position: absolute;
+              right: 17px;
+              top: 22%;
+          }
+  
+  
+        }
+      }
+    }
+  }
+  
+  
+  ::ng-deep{
+      .addSec {
+        .material-icons {
+          font-size: 20px !important;
+          line-height: 36px;
+          letter-spacing: 0.02em;
+          color: rgba(34, 34, 34, 0.5);
+        }
+      }
+  }
+  
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .upldbtn {
+      padding: 8px 20px;
+      width: 100%;
+      background: #F1F1F1;
+      border: 1px solid rgba(34, 34, 34, 0.3);
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 16px;
+      color: #222222;
+      opacity: 0.5;
+      height: 136px;
+  }
+  
+  .upldbtn p {
+    margin-top: 13px;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+  }
+  .add_button{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background: #022c3b;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 13px;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 30px;
+  }
+
+  .fullwidth{
+    width: 100%;
+  }
+  .Upload__area{
+    .preview_image{
+      max-height: 8.5rem;
+      object-fit: contain;
+      min-height: 8.5rem; 
+    }
+  }
+  .previewImages{
+    display: flex;
+  }
+  .deleteIcon{
+    color: red;
+    position: absolute;
+  }

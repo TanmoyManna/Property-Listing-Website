@@ -1,0 +1,42 @@
+<div class="container-fluid nav-bar bg-transparent">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="/home" class="navbar-brand d-flex align-items-center text-center">
+            <div class="p-2 me-2">
+                <img class="img-fluid" src="assets/logo.png" alt="Icon" style="width: 100%; height: 70px">
+            </div>
+        </a>
+        <button type="button" class="navbar-toggler" (click)="toggle()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- collapse show -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="/home" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/home'}">Home</a>
+                <a href="/about-us" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/about-us'}">About</a>
+                <div class="nav-item dropdown">
+                    <a href="/residental-property" class="nav-link dropdown-toggle"   [ngClass]="{active:activeUrl == 'residental-property'}">
+                        Residental
+                    </a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="/residental-property?type=Featured-Property" class="dropdown-item">Featured Property</a>
+                        <a href="/residental-property?type=Signature-Developments" class="dropdown-item">Signature Developments</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="/commercial-property" class="nav-link dropdown-toggle"  [ngClass]="{active:activeUrl == 'commercial-property'}">
+                        Commercial
+                    </a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="/commercial-property?type=Featured-Property" class="dropdown-item">Featured Property</a>
+                        <a href="/commercial-property?type=Signature-Developments" class="dropdown-item">Signature Developments</a>
+                    </div>
+                </div>
+                <a href="/contact-us" class="nav-item nav-link" [ngClass]="{active:activeUrl == '/contact-us'}">Contact</a>
+                <a href="/auth/login" class="nav-item nav-link" *ngIf="!isLoggedIn">Login</a>
+                <a href="/auth/add-property" style="cursor:pointer" class="nav-item nav-link" *ngIf="isLoggedIn">Add Property</a>
+                <a (click)="Logout()" style="cursor:pointer" class="nav-item nav-link" *ngIf="isLoggedIn">Logout</a>
+            </div>
+            <!-- <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a> -->
+        </div>
+    </nav>
+</div>
